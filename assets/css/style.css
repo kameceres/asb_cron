@@ -1,0 +1,484 @@
+.pad0 {padding: 0 !important}
+.pad5 {padding: 5px !important}
+.mar0 {margin: 0 !important}
+.mar5 {margin: 5px !important}
+.mar15 {margin: 15px !important}
+.text-right {text-align: right}
+.text-left {text-align: left}
+.red-color {color: #ff0000;}
+.green-color {color: #008800;}
+.height100 {height: 100%}
+html, body {
+    height: 100%;
+}
+body {
+    background: #000000
+    background-size: cover;
+}
+.container {
+    /*width: 1000px;*/
+}
+#login-page {
+    width: 600px;
+    margin: 80px auto 0;
+    text-align: center;
+    padding: 30px;
+    background: #fff;
+    border-radius: 20px;
+}
+.banner {
+    background: url('../img/header_bg.jpg') no-repeat center center;
+    width: auto;
+    height: 60px;
+    z-index: 10;
+    background-size: cover;
+}
+.login-banner {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+.login-banner img {
+    align-self: center;
+}
+.login-banner a {
+    display: flex;
+}
+.login-banner a span {
+    justify-content: center;
+    align-self: center;
+    font-size: 20px;
+    padding-left: 20px;
+    color: #fff;
+}
+
+.banner {
+    margin-bottom: 50px;
+}
+.banner-logo {
+    padding-top: 10px;
+    display: block;
+    color: #fff;
+    font-size: 16px;
+}
+.banner-logo:hover, .banner-logo:active, .banner-logo:focus {
+    text-decoration: none;
+    color: #fff;
+}
+.user {
+    float: right;
+    position: relative;
+    top: 18px;
+}
+.user a {
+    /*font-size: 16px;*/
+    color: #fff;
+}
+.user a:hover, .user a:active, .user a:focus {
+    text-decoration: none;
+}
+.menu-top {
+    background: url('../img/drop_box_top.png') left top no-repeat;
+    height: 14px;
+    width: 143px;
+}
+.menu-mid {
+    background: url("../img/drop_box_mid.png") repeat-y;
+    padding: 15px 15px;
+    z-index: 10;
+}
+.menu-bottom {
+    background: url("../img/drop_box_btm.png") left bottom no-repeat;
+    height: 13px;
+}
+.user-menu-show {
+    display: none;
+    border-top: 0;
+    position: absolute;
+    right: -7px;
+    top: 15px;
+    border-radius: 4px;
+    z-index: 1000;
+    transition: ease 0.5s;
+}
+.menu-mid ul {
+    list-style: none;
+    padding-left: 0;
+    text-align: left;
+    margin-bottom: 0;
+}
+.menu-mid ul li {
+    padding-bottom: 10px;
+}
+.menu-mid ul li:last-child {
+    padding-bottom: 0;
+}
+.menu-mid ul li a {
+    color: #000;
+    /*font-size: 14px;*/
+}
+.user:hover .user-menu-show{
+    display: block;
+}
+
+.main-content {
+    background: #fff;
+    border-radius: 10px;
+}
+.login-form {
+    width: 400px;
+    margin: 0 auto;
+    padding: 50px 20px;
+    border: 1px solid #474747;
+    border-radius: 5px;
+    box-shadow: 5px 5px 4px #d2d2d2;
+    background: linear-gradient(#B8E8C2, #FFF);;
+}
+.login-label {
+    padding-bottom: 15px;
+    font-size: 22px;
+}
+.login-button {
+    margin-top: 25px;
+}
+.btn-login {
+    width: 40%;
+    border-radius: 10px;
+    background: -webkit-gradient(linear, left top, left bottom, from(#7db72f), to(#4e7d0e));
+    padding: 10px 50px;
+}
+.login-more {
+    margin-top: 30px;
+}
+#main {
+    /*background: url('../img/mid.jpg') repeat-y;*/
+    min-height: 400px;
+    height: calc(100% - 150px);
+}
+.employee-menu {
+    text-align: center;
+    height: 100%;
+    overflow: auto;
+    float: left;
+}
+.menu-line {
+    border-bottom: 2px solid #bfbfbf;
+    margin: 2px auto 5px;
+    width: 90%;
+}
+.employee-clock {
+    margin-top: 20px;
+}
+.custom-radio {
+    width: 140px;
+    cursor: pointer;
+    position: relative;
+}
+.custom-radio .label-name {
+    text-align: center;
+    display: block;
+    padding: 10px 0;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    box-shadow: 2px 0 10px #474747;
+    /*font-size: 20px;*/
+    line-height: 15px;
+}
+.custom-radio .new-radio {
+    position: absolute;
+    top: 0;
+    display: none;
+}
+.custom-radio .new-radio:checked + .label-name, .custom-radio .new-radio:hover + .label-name:hover {
+    background-color:#404040;
+    color:#F7F7F7;
+    border-radius: 8px;
+    box-shadow: 0 0 10px 0 #474747;
+    transition: all ease 0.5s;
+}
+.custom-radio.green .new-radio:checked + .label-name, .custom-radio.green .new-radio:hover + .label-name:hover {
+    background-color: #c8ffc5;
+    border-radius: 10px;
+    color: #000;
+}
+.custom-radio.red .new-radio:checked + .label-name, .custom-radio.red .new-radio:hover + .label-name:hover {
+    background-color: #e99494;
+    border-radius: 10px;
+    color: #000;
+}
+.clock-button {
+    background: url('../img/clock_in.png') no-repeat center center;
+    width: 163px;
+    height: 50px;
+    margin: 0 auto;
+    border: none;
+    transition: 0.5s ease;
+}
+.clock-button:hover {
+    background: url('../img/clock_out.png') no-repeat center center;
+    transition: 0.5s ease;
+}
+.clock:hover .clock-out {
+    display: block;
+}
+.employee-title {
+    /*font-size: 24px;*/
+}
+.employee-title span {
+    float: right;
+}
+.employee-times {
+    color: #a7a6a5;
+}
+.employee-timeline, .employee-today {
+    font-size: 12px;
+    font-weight: bold;
+}
+.sidebar-panel {
+    padding: 0 3px;
+}
+.sidebar-panel .panel-default {
+    border: none;
+    box-shadow: none;
+}
+.sidebar-panel .panel-default>.panel-heading {
+    background: #fff;
+    border: none;
+}
+.sidebar-panel .panel-default>.panel-heading+.panel-collapse>.panel-body {
+    border: none
+}
+.sidebar-panel .panel-default .panel-body {
+    padding: 15px 5px;
+}
+
+.content {
+    padding: 0 30px;
+    float: left;
+    /*min-height: 570px;*/
+    height: 100%;
+}
+.main-content-header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+.header-item {
+    display: flex;
+}
+.header-left {
+    align-self: center;
+}
+.header-right {
+    align-self: flex-end;
+}
+.header-list {
+    list-style: none;
+    display: flex;
+    padding-left: 0;
+}
+.header-list li {
+    width: 100px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #474747;
+    margin-left: 15px;
+    background: #fff;
+}
+.header-list li.active {
+    box-shadow: inset 0 0 10px #474747;
+}
+.header-list li a {
+    display: block;
+    padding: 5px 0;
+}
+.page-title {
+    text-align: center;
+    /*font-size: 28px;*/
+    margin-top: 0;
+    line-height: 32px;
+}
+.actual-time {
+    color: red;
+}
+.list-task .task-item {
+    border-bottom: 2px solid #d2d2d2
+}
+.task-radio {
+    width: 40%;
+    margin: 10px;
+}
+label.task-radio span.label-name {
+    padding: 10px 0;
+}
+.tool {
+    display: flex;
+    justify-content: space-around;
+}
+.task-info {
+    text-align: right;
+    margin-top: 0;
+    /*font-size: 20px;*/
+    color: #d2d2d2;
+}
+.bottom-content {
+    padding: 15px 0;
+}
+.btn-add-task {
+    width: 150px;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 2px 0px 10px #474747;
+    /*font-size: 22px;*/
+    font-weight: bold;
+    float: right;
+    margin-bottom: 20px;
+}
+.task-table {
+    width: 100%;
+}
+.task-table .row-title {
+    background: url('../img/header_bg.jpg');
+    height: 43px;
+    color: #fff;
+}
+.task-table .row-title .column {
+    text-align: center;
+    border-right: 2px solid #000;
+}
+.task-table .task-item {
+    text-align: center;
+    border-bottom: 2px solid #d2d2d2;
+    padding: 10px 0;
+}
+.task-table .task-item .column p {
+    margin: 0;
+}
+.task-table .task-item .column.task-name {
+    font-weight: bold;
+}
+.task-table .task-item .column.act-time.over-est {
+    color: #ff0000;
+}
+.task-table .task-item .column.act-time.under-est {
+    color: #008800;
+}
+.work-button {
+    width: 106px;
+    height: 37px;
+    margin: 10px auto;
+    border: none;
+    transition: 0.3s ease;
+}
+.work-button.working {
+    background: url("../img/working.png");
+}
+.work-button.working:hover {
+    background: url("../img/stopped.png");
+    transition: 0.3s ease;
+}
+.work-button.stopped {
+    background: url("../img/stopped.png");
+}
+.work-button.stopped:hover {
+    background: url("../img/working.png");
+    transition: 0.3s ease;
+}
+.form-horizontal .note-button {
+    margin: 10px 0;
+}
+
+@media screen and (max-width: 992px) and (min-width: 768px) {
+    .banner-logo span, .employee-title span {
+        display: none;
+    }
+    .content {
+        padding: 0 15px;
+    }
+    .work-button.working, .work-button.stopped, .work-button.working:hover, .work-button.stopped:hover{
+        -webkit-background-size: 80px;
+        background-size:80px;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+    .row-title {
+        font-size: 12px;
+    }
+    .row-title .column {
+        padding: 0 5px;
+    }
+}
+@media screen and (max-width: 767px) and (min-width: 320px) {
+    #login-page, .login-form {
+        width: 100%;
+    }
+    #login-page {
+        height: calc(100% - 62px);
+        margin-top: 0;
+        border-radius: 0;
+        background: none;
+    }
+    .login-form {
+        box-shadow: none;
+    }
+    .login-banner a span {
+        display: none;
+    }
+    .login-title h1 {
+        font-size: 25px;
+    }
+    .banner {
+        margin-bottom: 0;
+    }
+    .banner-logo span {
+        display: none;
+    }
+    .user {
+        padding-right: 15px;
+    }
+    .user-menu-show {
+        right: 7px;
+    }
+    .main-content {
+        border-radius: 0;
+    }
+    .content {
+        padding: 0 15px;
+        min-height: 0;
+    }
+    .mobile-hide {
+        display: none;
+    }
+    .menu-line {
+        width: 100%;
+    }
+    .main-content-header {
+        flex-direction: column;
+    }
+    .header-left, .header-right {
+        align-self: center;
+    }
+    .header-list li {
+        width: auto;
+    }
+    .header-list li a {
+        padding: 5px 10px;
+    }
+    .header-list li img {
+        width: 30px;
+    }
+    .task-table .row-title, .task-table .task-item .column p {
+        font-size: 12px;
+    }
+    .task-table .column.est-time, .task-table .column.task-more {
+        display: none;
+    }
+    .work-button.working, .work-button.stopped, .work-button.working:hover, .work-button.stopped:hover{
+        -webkit-background-size: 60px;
+        background-size:80px;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+}

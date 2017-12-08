@@ -1,0 +1,330 @@
+body {
+	height: calc(100% - 110px);
+	background-attachment: fixed;
+}
+#main {
+	margin-top: 110px;
+	height: calc(100% - 50px);
+}
+.form-horizontal .form-group .error {
+	color: red;
+	text-align: left;
+}
+.user-menu {
+	padding-right: 0px;
+}
+.btn-logout {
+	margin-top: 10px;
+	margin-left: 10px;
+}
+.btn-main-clock-in {
+	font-weight: bold;
+	font-size: 26px;
+	background-color: #5cb85c;
+    border-color: #4cae4c;
+    color: #fff;
+}
+.btn-main-clock-out {
+	font-weight: bold;
+	font-size: 26px;
+	background-color: #d9534f;
+    border-color: #d43f3a;
+    color: #fff;
+}
+.btn-start-task {
+	background-color: #5cb85c;
+    border-color: #4cae4c;
+    color: #fff;
+}
+.btn-stop-task {
+	background-color: #d9534f;
+    border-color: #d43f3a;
+    color: #fff;
+}
+.btn-start-task.disabled {
+	background-color: #dedede;
+}
+#schedules {
+	text-align: left;
+	padding-left: 15px;
+}
+.task-table .task-item .column.task-name {
+	padding-left: 5px;
+}
+.banner {
+	position: fixed;
+	width: 100%;
+	top: 0;
+}
+.banner .kiosk-name {
+	color: #fff;
+	font-size: 18px;
+	padding-top: 10px;
+	text-transform: uppercase;
+}
+.equipment-wrapper{
+	
+}
+.equipment-item {
+	padding: 5px;
+	background: #ccc;
+	border-radius: 5px;
+	margin-top: 5px;
+	display: inline-block;
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+	body {
+		background: #fff;
+	}
+	#main {
+		margin-top: 0;
+	}
+	.employee-menu, .content {
+		height: auto;
+	}
+	.employee-menu {
+		margin-top: 60px;
+	}
+	.content {
+		margin-bottom: 60px;
+	}
+	.btn-logout {
+		margin-left: 0;
+		margin-right: 10px;
+	}
+	.header-right {
+		width: 100%;
+	}
+	.header-list {
+		width: 100%;
+		justify-content: space-between;
+	}
+	.header-list li {
+		margin: 0;
+	}
+}
+
+/*Mobile Menu*/
+.mobile-menu {
+	display: none;
+}
+.mobile-list-menu {
+	list-style: none;
+	display: flex;
+	justify-content: space-between;
+	padding-left: 0;
+	align-self: center;
+	margin-bottom: 0;
+	align-items: center;
+	height: 56px;
+	background: #fff;
+}
+.mobile-list-menu li {
+	display: inline-block;
+	width: 25%;
+	text-align: center;
+}
+.mobile-list-menu li span {
+	font-size: 20px;
+}
+.mobile-list-menu li a {
+	color: #474747;
+}
+.mobile-list-menu li.active a, .mobile-list-menu li a:hover {
+	color: #5cb85c;
+}
+.mobile-show {
+	display: none;
+}
+@media screen and (min-width: 320px) and (max-width: 767px) {
+	.header-right {
+		display: none;
+	}
+	.mobile-menu {
+		display: block;
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+		border-top: 1px solid #ababab;
+		margin-left: -15px;
+	}
+	.mobile-show {
+		display: block;
+	}
+}
+@media screen and (max-height: 590px) {
+	#main {
+		height: auto;
+	}
+}
+
+/*Time Management CSS*/
+.admin-left-sidebar {
+    padding-top: 40px;
+    margin-left: 20px;
+}
+.admin-list {
+    list-style: none;
+    padding-left: 0;
+}
+.admin-list .admin-list-item {
+    padding: 5px 10px;
+    border-bottom: 1px solid #ababab;
+}
+.admin-list .admin-list-item a {
+    color: #000;
+}
+.admin-list .admin-list-item a:hover {
+
+}
+.admin-department {
+    padding-left: 20px;
+    padding-top: 40px;
+}
+.admin-department h3{
+    font-weight: bold;
+    font-size: 16px;
+}
+.depart-item {
+    margin-bottom: 10px;
+    text-align: center;
+}
+.depart-item a {
+    padding: 5px;
+    display: block;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    color: #000;
+}
+.depart-item a.active {
+    background: linear-gradient(#62c419, #b3e38f);
+    font-weight: bold;
+}
+.big-title {
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    margin-right: 20px;
+}
+.time-info {
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+.inl-bl {
+    display: inline-block;
+}
+.time-info .inl-bl {
+    align-items: center;
+}
+.show-time {
+    align-self: center;
+}
+.show-time p {
+    margin-bottom: 0;
+}
+.time-prev a, .time-next a {
+    font-size: 30px;
+    color: #000;
+}
+.time-border {
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+
+.ui-timepicker-container {
+	z-index: 1100 !important;
+}
+
+.check-background {
+	background: url(../img/check.png) no-repeat;
+	background-color: #fff;
+	background-position: 97%;
+}
+
+#profile {
+	margin-top: 110px;
+}
+#profile .form-group label, .settings .form-group label {
+	margin-top: 5px;
+}
+.login-form {
+	padding: 20px;
+}
+.login-form .remember-me {
+	margin-top: 15px;
+	padding-left: 10px;
+}
+.clickable {
+	cursor: pointer;
+}
+.employee-timeline-item {
+	text-align: left;
+	margin: 0;
+}
+.day-off {
+	color: #C00000;
+}
+.date {
+	padding: 0 5px;
+}
+.date-schedule {
+	padding: 0;
+}
+.date-schedule-time {
+	margin: 0;
+}
+.employee-timeline.schedules {
+	font-size: 11px;
+	height: calc(100vh - 450px);
+	overflow-y: auto;
+}
+.grayed-out {
+	background: #535353;
+}
+.split-name {
+	display: none;
+}
+.grayed-out .split-name {
+	display: block;
+}
+
+
+.task-table .row-title .column {
+	padding-top: 10px;
+}
+.task-table .task-item, .task-table .row-title {
+	display: flex;
+	justify-content: space-between;
+}
+.task-table .task-item {
+	align-items: center;
+	border-bottom: 2px solid #ccc;
+	position: relative;
+}
+.task-table .split-name {
+	position: absolute;
+	width: auto;
+	left: 0;
+	right: 0;
+	text-align: center;
+	top: 20px;
+	font-size: 20px;
+	color: #fff;
+}
+.task-table .task-more, .task-table .work-flow {
+	z-index: 1000;
+}
+.task-table .task-item .column.act-time.over-est .est-time {
+	color: #000;
+}
+.width30 {width: 30%}
+.width10 {width: 10%}
+.width15 {width: 15%}
+.width20 {width: 20%}
+.width35 {width: 35%}
+.width40 {width: 40%}
+.width55 {width: 55%}

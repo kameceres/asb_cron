@@ -22,8 +22,8 @@ class Alert extends MY_Controller
         
         $email = array();
         $email['from'] = 'tasktracker@asb.club';
-        //$email['to'] = 'jaime@advancedscoreboards.com, gerald@advancedscoreboards.com';
-        $email['to'] = 'tran.pham@ceresolutions.com';
+        $email['to'] = 'jaime@advancedscoreboards.com, gerald@advancedscoreboards.com';
+        //$email['to'] = 'tran.pham@ceresolutions.com';
         $email['reply_to'] = 'jaime@advancedscoreboards.com';
         $email['subject'] = "Inactive Users";
         $email['html_body'] = $html;

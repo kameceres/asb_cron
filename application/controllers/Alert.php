@@ -43,7 +43,7 @@ class Alert extends MY_Controller
         ');
         $this->db->from('companies');
         $this->db->join('department', 'companies.company_id = department.c_id', 'LEFT OUTER');
-        $this->db->join('users', 'users.c_id = companies.company_id AND use_as_contact = 1', 'LEFT OUTER');
+        $this->db->join('users', 'users.c_id = companies.company_id AND use_as_contact = 1 AND users.remove = 0', 'LEFT OUTER');
         $this->db->join('
         (
             SELECT c_id, d_id, MIN(CEIL((' . $tstamp . ' - tstamp)/86400)) AS inactive_days

@@ -35,6 +35,7 @@ class Alert extends MY_Controller
     
     private function pullInactiveCompanies()
     {
+        $tstamp = time();
         $this->db->select('
             companies.company_id, companies.c_name, department.d_id, department.department_name,
             companies.c_phone_number, companies.c_state, companies.timezone, wb.inactive_days,
@@ -45,7 +46,7 @@ class Alert extends MY_Controller
         $this->db->join('users', 'users.c_id = companies.company_id AND use_as_contact = 1', 'LEFT OUTER');
         $this->db->join('
         (
-            SELECT c_id, d_id, MIN(DATEDIFF("' . date('Y-m-d') . '", w_date)) AS inactive_days
+            SELECT c_id, d_id, MIN(CEIL((' . $tstamp . ' - tstamp)/86400)) AS inactive_days
             FROM work_board
             GROUP BY c_id, d_id
         ) wb', 'wb.c_id = companies.company_id AND wb.d_id = department.d_id', 'LEFT OUTER');
@@ -57,7 +58,7 @@ class Alert extends MY_Controller
             FROM work_board
             WHERE c_id = companies.company_id
             GROUP BY c_id, d_id
-            HAVING MIN(DATEDIFF("' . date('Y-m-d') . '", w_date)) > 7
+            HAVING MIN(CEIL((' . $tstamp . ' - tstamp)/86400)) > 7
         ) AND (companies.alert_date IS NULL OR companies.alert_date <= "' . date('Y-m-d') . '")', null);
         
         $query = $this->db->get();

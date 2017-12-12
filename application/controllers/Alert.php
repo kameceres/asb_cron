@@ -42,6 +42,7 @@ class Alert extends MY_Controller
             users.id, users.first_name, users.last_name, companies.alert_date
         ');
         $this->db->from('companies');
+        $this->db->join('company_apps', 'companies.company_id = company_apps.c_id AND company_apps.app_id = 1 AND expire_date >= "' . date('Y-m-d') . '"', 'INNER OUTER');
         $this->db->join('department', 'companies.company_id = department.c_id', 'LEFT OUTER');
         $this->db->join('users', 'users.c_id = companies.company_id AND use_as_contact = 1 AND users.remove = 0', 'LEFT OUTER');
         $this->db->join('
@@ -60,6 +61,7 @@ class Alert extends MY_Controller
             GROUP BY c_id, d_id
             HAVING MIN(CEIL((' . $tstamp . ' - tstamp)/86400)) > 7
         ) AND (companies.alert_date IS NULL OR companies.alert_date <= "' . date('Y-m-d') . '")', null);
+        $this->db->order_by('companies.timezone, companies.c_name');
         
         $query = $this->db->get();
         $data = $query->result();

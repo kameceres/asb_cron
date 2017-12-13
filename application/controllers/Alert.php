@@ -50,17 +50,21 @@ class Alert extends MY_Controller
         $this->db->join('users', 'users.c_id = companies.company_id AND use_as_contact = 1 AND users.remove = 0', 'LEFT OUTER');
         $this->db->join('
         (
-            SELECT c_id, d_id, MIN(CEIL((' . $tstamp . ' - tstamp)/86400)) AS inactive_days
+            SELECT work_board.c_id, work_board.d_id, MIN(CEIL((' . $tstamp . ' - tstamp)/86400)) AS inactive_days
             FROM work_board
-            GROUP BY c_id, d_id
+            INNER JOIN department ON department.c_id = work_board.c_id AND department.d_id = work_board.d_id AND department.active = 1
+            GROUP BY work_board.c_id, work_board.d_id
         ) wb', 'wb.c_id = companies.company_id AND wb.d_id = department.d_id', 'LEFT OUTER');
         $this->db->where('department.active', 1);
+        $this->db->where('department.alert_enable', 1);
+        $this->db->where('(department.alert_date IS NULL OR department.alert_date <= "' . date('Y-m-d') . '")', null);
         $this->db->where('EXISTS
         (
-            SELECT c_id, d_id
+            SELECT work_board.c_id, work_board.d_id
             FROM work_board
-            WHERE c_id = companies.company_id
-            GROUP BY c_id, d_id
+            INNER JOIN department ON department.c_id = work_board.c_id AND department.d_id = work_board.d_id AND department.active = 1
+            WHERE work_board.c_id = companies.company_id
+            GROUP BY work_board.c_id, work_board.d_id
             HAVING MIN(CEIL((' . $tstamp . ' - tstamp)/86400)) > 7
         )', null);
         $this->db->order_by('companies.timezone, companies.c_name, department.department_name');

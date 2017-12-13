@@ -18,17 +18,19 @@ class Alert extends MY_Controller
         
         $companies = $this->pullInactiveCompanies();
         
-        $html = $this->renderTable($companies);
-        
-        $email = array();
-        $email['from'] = 'tasktracker@asb.club';
-        $email['to'] = 'jaime@advancedscoreboards.com, gerald@advancedscoreboards.com';
-        //$email['to'] = 'tran.pham@ceresolutions.com';
-        $email['reply_to'] = 'jaime@advancedscoreboards.com';
-        $email['subject'] = "Inactive Users";
-        $email['html_body'] = $html;
-        
-        $this->send_email($email);
+        if ($companies) {
+            $html = $this->renderTable($companies);
+            
+            $email = array();
+            $email['from'] = 'tasktracker@asb.club';
+            $email['to'] = 'jaime@advancedscoreboards.com, gerald@advancedscoreboards.com, tran.pham@ceresolutions.com';
+            //$email['to'] = 'tran.pham@ceresolutions.com';
+            $email['reply_to'] = 'jaime@advancedscoreboards.com';
+            $email['subject'] = "Inactive Users";
+            $email['html_body'] = $html;
+            
+            $this->send_email($email);
+        }
         
         echo 'Successfull';
     }
@@ -37,12 +39,13 @@ class Alert extends MY_Controller
     {
         $tstamp = time();
         $this->db->select('
-            companies.company_id, companies.c_name, department.d_id, department.department_name,
-            companies.c_phone_number, companies.c_state, companies.timezone, wb.inactive_days,
-            users.id, users.first_name, users.last_name, companies.alert_date
+            companies.company_id, companies.c_name, companies.timezone, companies.remove, companies.c_phone_number,
+            companies.c_address_1, companies.c_city, companies.c_state, companies.c_zip,
+            department.d_id, department.department_name, department.alert_date, wb.inactive_days, department.alert_enable,
+            users.id, users.first_name, users.last_name, users.phone_number
         ');
         $this->db->from('companies');
-        $this->db->join('company_apps', 'companies.company_id = company_apps.c_id AND company_apps.app_id = 1 AND expire_date >= "' . date('Y-m-d') . '"', 'INNER OUTER');
+        $this->db->join('company_apps', 'companies.company_id = company_apps.c_id AND company_apps.app_id = 3 AND expire_date >= "' . date('Y-m-d') . '"', 'INNER OUTER');
         $this->db->join('department', 'companies.company_id = department.c_id', 'LEFT OUTER');
         $this->db->join('users', 'users.c_id = companies.company_id AND use_as_contact = 1 AND users.remove = 0', 'LEFT OUTER');
         $this->db->join('
@@ -51,7 +54,6 @@ class Alert extends MY_Controller
             FROM work_board
             GROUP BY c_id, d_id
         ) wb', 'wb.c_id = companies.company_id AND wb.d_id = department.d_id', 'LEFT OUTER');
-        $this->db->where('companies.remove <> 1', null);
         $this->db->where('department.active', 1);
         $this->db->where('EXISTS
         (
@@ -60,8 +62,8 @@ class Alert extends MY_Controller
             WHERE c_id = companies.company_id
             GROUP BY c_id, d_id
             HAVING MIN(CEIL((' . $tstamp . ' - tstamp)/86400)) > 7
-        ) AND (companies.alert_date IS NULL OR companies.alert_date <= "' . date('Y-m-d') . '")', null);
-        $this->db->order_by('companies.timezone, companies.c_name');
+        )', null);
+        $this->db->order_by('companies.timezone, companies.c_name, department.department_name');
         
         $query = $this->db->get();
         $data = $query->result();
@@ -74,6 +76,9 @@ class Alert extends MY_Controller
                     $companies[$item->company_id] = array(
                         'c_name' => $item->c_name,
                         'c_phone_number' => $item->c_phone_number,
+                        'c_address_1' => $item->c_address_1,
+                        'c_city' => $item->c_city,
+                        'c_zip' => $item->c_zip,
                         'c_state' => $item->c_state,
                         'timezone' => $item->timezone,
                         'alert_date' => $item->alert_date,
@@ -85,13 +90,15 @@ class Alert extends MY_Controller
                 $companies[$item->company_id]['depts'][$item->d_id] = array(
                     'd_id' => $item->d_id,
                     'department_name' => $item->department_name,
-                    'inactive_days' => $item->inactive_days
+                    'inactive_days' => $item->inactive_days,
+                    'alert_enable' => $item->alert_enable
                 );
         
                 $companies[$item->company_id]['contacts'][$item->id] = array(
                     'id' => $item->id,
                     'first_name' => $item->first_name,
-                    'last_name' => $item->last_name
+                    'last_name' => $item->last_name,
+                    'phone_number' => $item->phone_number
                 );
             }
         }

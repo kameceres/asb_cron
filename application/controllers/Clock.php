@@ -10,6 +10,48 @@ class Clock extends MY_Controller
         
         $this->load->database();
     }
+    
+    public function replications()
+    {
+        if (date('i') < 5) {
+            $this->db->select('id');
+            $this->db->from('test_master');
+            $this->db->where('id', 1);
+            $query = $this->db->get();
+            
+            $data = $query->result();
+            if ($data) {
+                $this->db->where('id', 1);
+                $this->db->update('test_master', ['test_time' => strtotime(date('Y-m-d H:00:00'))]);
+            } else {
+                $this->db->insert('test_master', ['test_time' => strtotime(date('Y-m-d H:00:00')), 'id' => 1]);
+            }
+            
+        } else {
+            $this->db->select('id, test_time');
+            $this->db->from('test_master');
+            $this->db->where('id', 3);
+            $query = $this->db->get();
+            $data = $query->result();
+            
+            if ($data) {
+                $timet = $data[0];
+                print_r($timet->test_time . ' = ' . strtotime(date('Y-m-d H:00:00')));
+                if (strtotime(date('Y-m-d H:00:00')) != $timet->test_time) {
+                    $do_email = array();
+                    $do_email['from'] = 'tasktracker@asb.club';
+                    $do_email['to'] = 'jaime@advancedscoreboards.com';
+                    $do_email['subject'] = "Master Master Issue";
+                    $do_email['html_body'] = 'Master Master does not appear to be updating between the 3000 and the 1000.';
+                    $do_email['reply_to'] = 'jaime@advancedscoreboards.com';
+                    $do_email['Attachments'] = array();
+                    
+                    $res = $this->send_email($do_email);
+                    print_r($res);
+                }
+            }
+        }
+    }
 
     /**
      * Load workboard

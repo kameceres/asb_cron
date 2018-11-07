@@ -8,6 +8,18 @@ class Workboard extends MY_Controller
     {
         parent::__construct();
     }
+    
+    public function wb_saving()
+    {
+        $date =  date('Y-m-d', strtotime("-30 days"));
+        print_r($date);
+        $sql = 'DELETE work_board_saving
+            FROM work_board_saving
+            INNER JOIN work_board ON work_board_saving.work_board_id = work_board.work_board_id
+            WHERE work_board.w_date <= "' . $date . '"';
+        print_r($sql);
+        $this->db->query($sql);
+    }
 
     /**
      * Load workboard

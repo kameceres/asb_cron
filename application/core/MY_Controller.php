@@ -22,7 +22,7 @@ class MY_Controller extends CI_Controller
             'Attachments' => isset($email['attachments']) ? $email['attachments'] : null
         ));
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, 'http://api.postmarkapp.com/email');
+        curl_setopt($ch, CURLOPT_URL, 'https://api.postmarkapp.com/email');
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array(
